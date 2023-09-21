@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const signup = async (email, password, displayName) => {
+  const signup = async (email, password) => {
     setError(null);
     setLoading(true);
     try {
@@ -13,7 +13,7 @@ export const useSignup = () => {
       if (!res) {
         throw new Error("User could not sign up");
       }
-      await updateProfile(res.currentUser, { displayName });
+
       setLoading(false);
       setError(null);
     } catch (err) {
