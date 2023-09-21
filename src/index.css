@@ -5,3 +5,7 @@
 body {
   @apply bg-purple-400;
 }
+
+.navs {
+  @apply bg-purple-700 text-white rounded-lg w-fit h-fit flex justify-center items-center px-5 py-2 hover:border-2 hover:border-purple-500 hover:bg-transparent hover:text-purple-500;
+}

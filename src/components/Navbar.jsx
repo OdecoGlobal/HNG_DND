@@ -4,17 +4,18 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="flex bg-white p-5 h-fit">
-      <Link
-        to="/"
-        className="border-2 border-red-500 rounded-lg w-fit h-fit flex justify-center items-center px-5"
-      >
+      <Link to="/" className="navs">
         Home
       </Link>
 
-      <div className="ml-auto">
-        <Link>Sign Up</Link>
-        <Link>Log In</Link>
-        <Link>Log Out</Link>
+      <div className="ml-auto flex items-center ">
+        <Link className="navs" to="signup">
+          Sign Up
+        </Link>
+        <Link className="navs ml-4" to="login">
+          Log In
+        </Link>
+        <Link className="navs ml-4">Log Out</Link>
       </div>
     </nav>
   );
