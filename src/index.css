@@ -9,3 +9,7 @@ body {
 .navs {
   @apply bg-purple-700 text-white rounded-lg w-fit h-fit flex justify-center items-center px-5 py-2 hover:border-2 hover:border-purple-500 hover:bg-transparent hover:text-purple-500;
 }
+
+.forms {
+  @apply ml-4 placeholder:text-center rounded-lg h-10 mb-7 px-5;
+}
