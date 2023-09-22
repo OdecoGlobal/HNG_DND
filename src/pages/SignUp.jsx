@@ -18,7 +18,7 @@ export default function SignUp() {
       )}
 
       <div className="flex justify-center min-h-full mt-12">
-        <form className="flex flex-col" onSubmit={handleSubmit}>
+        <form className="flex flex-col items-center" onSubmit={handleSubmit}>
           <label>
             <p className="detail">Email Address:</p>
             <input

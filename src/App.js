@@ -4,9 +4,19 @@ import Navbar from "./components/Navbar";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { auth } from "./firebase/config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
 
 function App() {
-  const user = auth.currentUser;
+  const [user, setUser] = useState(false);
+  // const user = auth.currentUser;
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(true);
+    } else {
+      setUser(false);
+    }
+  });
   console.log(user);
   return (
     <div>
