@@ -15,7 +15,9 @@ export default function Login() {
   return (
     <>
       {error && (
-        <p className="my-4 text-center text-white text-xl font-mono">{error}</p>
+        <p className="my-4 text-center text-white mx-2 text-xl font-mono">
+          {error}
+        </p>
       )}
 
       <div className="flex justify-center min-h-full mt-12">

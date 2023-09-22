@@ -14,7 +14,9 @@ export default function SignUp() {
   return (
     <>
       {error && (
-        <p className="my-4 text-center text-white text-xl font-mono">{error}</p>
+        <p className="my-4 mx-2 text-center text-white text-xl font-mono">
+          {error}
+        </p>
       )}
 
       <div className="flex justify-center min-h-full mt-12">

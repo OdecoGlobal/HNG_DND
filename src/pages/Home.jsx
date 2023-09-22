@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen pt-5">
+    <div className="flex flex-col justify-center items-center min-h-screen pt-5 px-2">
       <input
         type="text"
         placeholder="Search Images"
