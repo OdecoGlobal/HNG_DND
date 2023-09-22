@@ -3,6 +3,10 @@ import icon from "../assets/upload_file_FILL0_wght400_GRAD0_opsz24.svg";
 
 export default function Home() {
   const [imgRef, setImgRef] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const handleImageUpload = (files) => {
     if (files && files.length > 0) {
@@ -37,7 +41,13 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen pt-5">
-      <input type="text" placeholder="Search Images" className="forms" />
+      <input
+        type="text"
+        placeholder="Search Images"
+        onChange={handleSearchInputChange}
+        value={searchQuery}
+        className="forms"
+      />
       <label
         htmlFor="img-file"
         className="w-fit p-28 bg-white rounded-lg shadow-2xl flex flex-col  items-center justify-center cursor-pointer mt-10"
@@ -58,22 +68,26 @@ export default function Home() {
         </p>
       </label>
       <div className=" h-fit p-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full mt-5 gap-5 auto-rows-fr">
-        {imgRef.map((img, i) => (
-          <div
-            key={i}
-            className="shadow-xl rounded-xl overflow-hidden object-cover"
-          >
-            <p className="text-center text-white text-lg font-semibold">
-              {img.tag}
-            </p>
-            <img
-              src={img.url}
-              alt={i}
-              className="object-cover h-full "
-              loading="lazy"
-            />
-          </div>
-        ))}
+        {imgRef
+          .filter((img) =>
+            img.tag.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map((img, i) => (
+            <div
+              key={i}
+              className="shadow-xl rounded-xl overflow-hidden object-cover"
+            >
+              <p className="text-center text-white text-lg font-semibold">
+                {img.tag}
+              </p>
+              <img
+                src={img.url}
+                alt={i}
+                className="object-cover h-full "
+                loading="lazy"
+              />
+            </div>
+          ))}
       </div>
     </div>
   );
