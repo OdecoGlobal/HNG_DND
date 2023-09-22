@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import SignUp from "./pages/SignUp";
@@ -13,13 +13,23 @@ function App() {
       <BrowserRouter>
         <Navbar user={user} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={user ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/signup"
+            element={user ? <Navigate to="/" /> : <SignUp />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
 
+// element={user ? <Home /> : <Navigate to="/login" />}
 export default App;
