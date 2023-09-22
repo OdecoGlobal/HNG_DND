@@ -11,7 +11,7 @@ body {
 }
 
 .forms {
-  @apply ml-4 placeholder:text-center rounded-lg h-10 mb-7 px-5;
+  @apply ml-4 placeholder:text-center rounded-lg h-10 mb-7 px-5 outline-none;
 }
 .detail {
   @apply text-center mb-5 text-white font-bold text-lg;

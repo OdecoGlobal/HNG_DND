@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import icon from "../assets/upload_file_FILL0_wght400_GRAD0_opsz24.svg";
 
 export default function Home() {
@@ -10,11 +10,18 @@ export default function Home() {
         url: URL.createObjectURL(file),
         tag: `Image ${i + 1}`,
       }));
-      setImgRef((prevImg) => [...prevImg, ...newImages]);
+      const updatedImages = [...imgRef, ...newImages];
+      localStorage.setItem("UploadedImages", JSON.stringify(updatedImages));
+      // setImgRef((prevImg) => [...prevImg, ...newImages]);
+      setImgRef(updatedImages);
     }
   };
-  console.log(imgRef);
-
+  useEffect(() => {
+    const storedImages = localStorage.getItem("UploadedImages");
+    if (storedImages) {
+      setImgRef(JSON.parse(storedImages));
+    }
+  }, []);
   const handleInputChange = (e) => {
     const files = Array.from(e.target.files);
     handleImageUpload(files);
@@ -29,7 +36,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center min-h-screen pt-5">
+      <input type="text" placeholder="Search Images" className="forms" />
       <label
         htmlFor="img-file"
         className="w-fit p-28 bg-white rounded-lg shadow-2xl flex flex-col  items-center justify-center cursor-pointer mt-10"
