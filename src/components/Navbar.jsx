@@ -9,10 +9,7 @@ export default function Navbar() {
       </Link>
 
       <div className="ml-auto flex items-center ">
-        <Link className="navs" to="signup">
-          Sign Up
-        </Link>
-        <Link className="navs ml-4" to="login">
+        <Link className="navs ml-4" to="/login">
           Log In
         </Link>
         <Link className="navs ml-4">Log Out</Link>
