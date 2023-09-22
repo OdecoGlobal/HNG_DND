@@ -6,8 +6,11 @@ export default function Home() {
 
   const handleImageUpload = (files) => {
     if (files && files.length > 0) {
-      const newImages = files.map((file) => URL.createObjectURL(file));
-      setImgRef((prevImg) => [...prevImg, newImages]);
+      const newImages = files.map((file, i) => ({
+        url: URL.createObjectURL(file),
+        tag: `Image ${i + 1}`,
+      }));
+      setImgRef((prevImg) => [...prevImg, ...newImages]);
     }
   };
   console.log(imgRef);
@@ -52,8 +55,11 @@ export default function Home() {
             key={i}
             className="shadow-xl rounded-xl overflow-hidden object-cover"
           >
+            <p className="text-center text-white text-lg font-semibold">
+              {img.tag}
+            </p>
             <img
-              src={img}
+              src={img.url}
               alt={i}
               className="object-cover h-full "
               loading="lazy"
